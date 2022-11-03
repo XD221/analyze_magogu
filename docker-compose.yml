@@ -1,0 +1,39 @@
+version: '3'
+services:
+  python:
+    container_name: python_3.10
+    build: ./src
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./src:/app/
+    networks:
+      - my-network
+  redis:
+    container_name: redis_7.0.5
+    build: ./redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/redis/data/
+    networks:
+      - my-network
+    privileged: true
+networks:
+  my-network:
+    name: analyze_magogu
+# ?   driver: bridge
+    external: true
+
+
+# vs code extension:
+# aaron-bond.better-comments
+# ms-python.python
+# ms-azuretools.vscode-docker
+
+# create network
+# ! docker network create analyze_magogu
+
+#change value in redis container use exec
+# sudo docker exec -it --privileged [redis_container_id] sh
+# ! echo 1 > /proc/sys/vim/overcommit_memory
