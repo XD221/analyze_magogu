@@ -3,17 +3,17 @@ from template import *
 
 from random import randint
 
-# * Connection db
-con = redis.Redis(
-    host='redis_7.0.5',
-    port=6379,
-    password='1234'
-)
 
 #Section prove
 #st.subheader('Magogu Analítica')
 
 
+# ============= Config ============
+st.set_page_config(
+    #layout="wide",
+    page_title="Magogu",
+    page_icon="😊",
+    )
 # ============= Variables ============
 if 'num' not in st.session_state:
     st.session_state.num = 1
@@ -43,13 +43,6 @@ def read_csv_file(data):
 
 def write_data(data):
     st.write(data)
-# =============== Page ===============
-#def home():
-#    col1, col2 = st.columns([0.5, 1])
-#    with col1:
-#        st.button('Mostrar Datos', key='btn_1', on_click=btn_1_action)
-#    with col2:
-#        st.button('Calcular', key='btn_2')
 
 # ============= Classes =============
 class Header:
